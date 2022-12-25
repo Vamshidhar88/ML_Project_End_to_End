@@ -17,7 +17,7 @@ def home():
 def predict_api():
     data=request.json['data']
     print(data)
-    new_data=scaler.transform(np.array(data.value().reshape(1,-1)))
+    new_data=scaler.transform(np.array(list(data.values())).reshape(1,-1))
     predictied_price=regmodel.predict(new_data)[0]
     return jsonify(predictied_price)
 
